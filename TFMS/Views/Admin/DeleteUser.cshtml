@@ -1,0 +1,81 @@
+﻿@model TFMS.ViewModels.UserViewModel
+
+@{
+    ViewData["Title"] = "Delete User";
+}
+
+<div class="container content-container"> @* Added container for consistent styling *@
+    <h1>Delete User</h1>
+
+    <h3>Are you sure you want to delete this user?</h3>
+    <div>
+        <h4>@Model.Email</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.IsActiveDriver)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.IsActiveDriver)
+            </dd>
+            <dt class="col-sm-3">
+                Roles
+            </dt>
+            <dd class="col-sm-9">
+                @string.Join(", ", Model.Roles)
+            </dd>
+        </dl>
+
+        <div class="d-flex justify-content-start align-items-center mt-3"> @* Added flexbox for alignment and margin-top *@
+            <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
+                Delete
+            </button>
+            <a asp-action="Users" class="btn btn-secondary">Back to List</a> @* Changed asp-action to "Users" assuming that's your index action for users *@
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm User Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you absolutely sure you want to delete the user **@Model.Email**? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form asp-action="DeleteUser" method="post" class="d-inline">
+                    <input type="hidden" asp-for="Id" /> @* Keep this for the actual POST *@
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

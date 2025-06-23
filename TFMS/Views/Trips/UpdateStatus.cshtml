@@ -1,0 +1,65 @@
+﻿@model TFMS.Models.Trip
+@using TFMS.Data
+@using TFMS.Models
+
+@{
+    ViewData["Title"] = "Update Trip Status";
+}
+
+<h1>Update Trip Status</h1>
+
+<h4>Trip: @Html.DisplayFor(model => model.StartLocation) to @Html.DisplayFor(model => model.EndLocation)</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="UpdateStatus" method="post"> @* asp-action is "UpdateStatus", method is "post" *@
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="TripId" />
+            <input type="hidden" asp-for="VehicleId" />
+            <input type="hidden" asp-for="DriverId" />
+            <input type="hidden" asp-for="StartLocation" />
+            <input type="hidden" asp-for="EndLocation" />
+            <input type="hidden" asp-for="ScheduledStartTime" />
+            <input type="hidden" asp-for="ScheduledEndTime" />
+            <input type="hidden" asp-for="EstimatedDistanceKm" />
+            <input type="hidden" asp-for="RouteDetails" />
+
+            <div class="form-group mb-3">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control"
+                        asp-items="@(new SelectList(Enum.GetValues(typeof(TripStatus))
+                                            .Cast<TripStatus>()
+                                            .Select(s => new SelectListItem { Value = s.ToString(), Text = s.GetDescription() }), "Value", "Text", Model.Status))">
+                </select>
+                @* <span asp-validation-for="Status" class="text-danger"></span> *@
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ActualStartTime" class="control-label"></label>
+                <input asp-for="ActualStartTime" class="form-control" type="datetime-local" />
+                <span asp-validation-for="ActualStartTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ActualEndTime" class="control-label"></label>
+                <input asp-for="ActualEndTime" class="form-control" type="datetime-local" />
+                <span asp-validation-for="ActualEndTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ActualDistanceKm" class="control-label"></label>
+                <input asp-for="ActualDistanceKm" class="form-control" />
+                <span asp-validation-for="ActualDistanceKm" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Update Status" class="btn btn-primary" />
+                <a asp-action="Details" asp-route-id="@Model.TripId" class="btn btn-secondary ms-2">Back to Trip Details</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

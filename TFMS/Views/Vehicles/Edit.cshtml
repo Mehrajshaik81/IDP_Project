@@ -1,0 +1,104 @@
+﻿@model TFMS.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Edit Vehicle";
+}
+
+@* Add container and row/col for consistent layout and apply 'content-container' for the light grey background *@
+<div class="container content-container mt-4">
+    @* Added content-container class here *@
+    <div class="row mb-3 align-items-center">
+        <div class="col-md-6">
+            <h1 class="text-primary">Edit Vehicle</h1> @* Changed from just "Edit" to "Edit Vehicle" for clarity *@
+        </div>
+        <div class="col-md-6 text-end">
+            @* You could add a "Back to List" button here if desired, or keep it at the bottom *@
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            @* Adjusted column size for the form itself *@
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="VehicleId" />
+                <div class="form-group mb-3">
+                    @* Added mb-3 for spacing between form groups *@
+                    <label asp-for="RegistrationNumber" class="control-label"></label>
+                    <input asp-for="RegistrationNumber" class="form-control" />
+                    <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Capacity" class="control-label"></label>
+                    <input asp-for="Capacity" class="form-control" />
+                    <span asp-validation-for="Capacity" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Status" class="control-label"></label>
+                    @* Changed input to select for Status, matching Create.cshtml *@
+                    <select asp-for="Status" class="form-select">
+                        <option value="">-- Select Status --</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                        <option value="Maintenance">Maintenance</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="LastServicedDate" class="control-label"></label>
+                    @* Changed input type to date, matching Create.cshtml *@
+                    <input asp-for="LastServicedDate" class="form-control" type="date" /> @* Added type="date" *@
+                    <span asp-validation-for="LastServicedDate" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Make" class="control-label"></label>
+                    <input asp-for="Make" class="form-control" />
+                    <span asp-validation-for="Make" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Model" class="control-label"></label>
+                    <input asp-for="Model" class="form-control" />
+                    <span asp-validation-for="Model" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="ManufacturingYear" class="control-label"></label>
+                    <input asp-for="ManufacturingYear" class="form-control" />
+                    <span asp-validation-for="ManufacturingYear" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="FuelType" class="control-label"></label>
+                    @* Changed input to select for FuelType, matching Create.cshtml *@
+                    <select asp-for="FuelType" class="form-select">
+                        <option value="">-- Select Fuel Type --</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Electric">Electric</option>
+                    </select>
+                    <span asp-validation-for="FuelType" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="CurrentOdometerKm" class="control-label"></label>
+                    <input asp-for="CurrentOdometerKm" class="form-control" />
+                    <span asp-validation-for="CurrentOdometerKm" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    @* Added mt-3 for spacing above the buttons *@
+                    <input type="submit" value="Save" class="btn btn-accent" />
+                    <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> @* Close the container div *@
+
+@* Removed the old redundant "Back to List" div as it's now part of the form-group above *@
+@* <div>
+    <a asp-action="Index">Back to List</a>
+</div> *@
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

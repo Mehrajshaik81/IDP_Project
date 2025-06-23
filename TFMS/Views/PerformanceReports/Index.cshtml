@@ -1,0 +1,106 @@
+﻿@model IEnumerable<TFMS.Models.PerformanceReport>
+
+@{
+    ViewData["Title"] = "Performance Reports";
+}
+
+<div class="container content-container">
+    <h1>Performance Reports</h1>
+
+    <!-- Button Row -->
+    <div class="d-flex justify-content-between mb-3">
+        <a asp-action="Generate" class="btn btn-accent">Generate New Report</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Dashboard" asp-action="Index">
+            <i class="bi bi-download"></i> Download
+        </a>
+    </div>
+
+    @if (TempData["ReportGeneratedMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["ReportGeneratedMessage"]
+        </div>
+    }
+    @if (TempData["ReportDeletedMessage"] != null)
+    {
+        <div class="alert alert-info">
+            @TempData["ReportDeletedMessage"]
+        </div>
+    }
+
+    <table class="table table-hover" id="performanceReportsTable">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.ReportType)</th>
+                <th>@Html.DisplayNameFor(model => model.GeneratedOn)</th>
+                <th>@Html.DisplayNameFor(model => model.ParametersUsed)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.ReportType)</td>
+                    <td>@Html.DisplayFor(modelItem => item.GeneratedOn)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ParametersUsed)</td>
+                    <td>
+                        <div class="d-flex flex-row justify-content-start flex-nowrap">
+                            <a asp-action="Details" asp-route-id="@item.PerformanceId" class="btn btn-sm btn-info me-1">
+                                <i class="bi bi-info-circle"></i> Details
+                            </a>
+                            @if (User.IsInRole("Fleet Administrator"))
+                            {
+                                <a asp-action="Delete" asp-route-id="@item.PerformanceId" class="btn btn-sm btn-danger">
+                                    <i class="bi bi-trash"></i> Delete
+                                </a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <!-- Include Bootstrap Icons if not already included -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        .table thead th {
+            background-color: var(--primary) !important;
+            color: var(--text-light) !important;
+            border-color: var(--primary) !important;
+            white-space: normal;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        #performanceReportsTable tbody tr:nth-child(odd) {
+            background-color: #f8f9fa !important;
+        }
+
+        #performanceReportsTable tbody tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        #performanceReportsTable td {
+            white-space: normal;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            vertical-align: middle;
+            padding: 0.5rem;
+        }
+
+            #performanceReportsTable td:last-child {
+                white-space: nowrap;
+                text-align: right;
+            }
+    </style>
+}

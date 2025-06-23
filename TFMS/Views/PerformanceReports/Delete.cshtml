@@ -1,0 +1,76 @@
+﻿@model TFMS.Models.PerformanceReport
+
+@{
+    ViewData["Title"] = "Delete Performance Report";
+}
+
+<div class="container content-container">
+    <h1 class="text-primary">Delete Report</h1>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ReportType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ReportType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GeneratedOn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GeneratedOn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ParametersUsed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ParametersUsed)
+        </dd>
+        @* Include GeneratedByUser if you added it to your model and service includes it *@
+        @if (Model.GeneratedByUser != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.GeneratedByUser)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.GeneratedByUser!.Email)
+            </dd>
+        }
+    </dl>
+
+    <div class="mt-4">
+        @* Added margin-top for spacing *@
+        @* The delete button now triggers the modal *@
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
+            Delete
+        </button>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to permanently delete this Performance Report? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form asp-action="Delete" method="post" id="deleteForm">
+                    <input type="hidden" asp-for="PerformanceId" />
+                    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

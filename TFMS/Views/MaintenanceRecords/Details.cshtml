@@ -1,0 +1,71 @@
+﻿@model TFMS.Models.Maintenance
+
+@{
+    ViewData["Title"] = "Maintenance Details";
+}
+
+
+
+<div class="container content-container">
+    <h1 class="text-primary">Maintenance Details</h1>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vehicle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vehicle!.RegistrationNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ScheduledDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ScheduledDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Status.GetDescription() 
+            @* Use GetDescription() here for display *@
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ActualCompletionDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ActualCompletionDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OdometerReadingKm)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OdometerReadingKm)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PerformedBy)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PerformedBy)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaintenanceType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaintenanceType)
+        </dd>
+    </dl>
+    <a asp-action="Edit" asp-route-id="@Model?.MaintenanceId" class="btn btn-accent">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

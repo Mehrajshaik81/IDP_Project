@@ -1,0 +1,166 @@
+﻿@model IEnumerable<TFMS.Models.Maintenance>
+
+@{
+    ViewData["Title"] = "Maintenance Records";
+}
+<div class="container content-container">
+    <h1>Maintenance Records</h1>
+    <p>
+        <a asp-action="Create" class="btn btn-accent">Schedule New Maintenance</a>
+    </p>
+    @* --- Search and Filter Section --- *@
+    <form asp-controller="MaintenanceRecords" asp-action="Index" method="get" class="mb-4">
+        <div class="row g-3 align-items-end">
+            <div class="col-md-3">
+                <label for="SearchString" class="form-label">Search (Description/Performer)</label>
+                <input type="text" name="searchString" id="SearchString" class="form-control" value="@ViewBag.CurrentSearchString" />
+            </div>
+            <div class="col-md-2">
+                <label for="StatusFilter" class="form-label">Filter by Status</label>
+                @* Use asp-items with ViewBag.StatusFilter prepared by controller for enum names/descriptions *@
+                <select name="statusFilter" id="StatusFilter" class="form-select" asp-items="ViewBag.StatusFilter">
+                    @* "All" is now part of ViewBag.StatusFilter *@
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="VehicleFilter" class="form-label">Filter by Vehicle</label>
+                <select name="vehicleIdFilter" id="VehicleFilter" class="form-select" asp-items="ViewBag.VehicleFilter">
+                    @* "All Vehicles" is in ViewBag *@
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="MaintenanceTypeFilter" class="form-label">Filter by Type</label>
+                <select name="maintenanceTypeFilter" id="MaintenanceTypeFilter" class="form-select" asp-items="ViewBag.MaintenanceTypeFilter">
+                    @* "All" is in ViewBag *@
+                </select>
+            </div>
+            <div class="col-md-2 d-flex justify-content-end">
+                <button type="submit" class="btn btn-outline-secondary">Apply Filters</button>
+                <a asp-action="Index" class="btn btn-outline-danger ms-2">Clear Filters</a>
+            </div>
+        </div>
+    </form>
+    @* --- End Search and Filter Section --- *@
+
+    <table class="table table-hover" id="maintenanceRecordsTable">
+        @* Added id="maintenanceRecordsTable" and table-hover class *@
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ScheduledDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActualCompletionDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OdometerReadingKm)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PerformedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaintenanceType)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vehicle!.RegistrationNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ScheduledDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status) @* Displays enum name or description *@
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActualCompletionDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OdometerReadingKm)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PerformedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaintenanceType)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.MaintenanceId" class="btn btn-sm btn-primary me-1"><i class="bi bi-pencil-square"></i> Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.MaintenanceId" class="btn btn-sm btn-info me-1"><i class="bi bi-info-circle"></i> Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.MaintenanceId" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <style>
+
+        /* --- TABLE HEADER STYLES (Applied to all tables) --- */
+        /* This rule targets all <th> elements within any table with the "table" class */
+        .table thead th {
+            background-color: var(--primary) !important; /* Use primary blue */
+            color: var(--text-light) !important; /* White text */
+            border-color: var(--primary) !important; /* Blue border */
+            white-space: normal; /* Allow header text to wrap */
+            padding: 0.75rem; /* Standard Bootstrap padding, adjust if needed */
+            text-align: left; /* Align text to the left */
+            vertical-align: middle; /* Vertically align text in the middle */
+        }
+        /* --- END TABLE HEADER STYLES --- */
+
+        /* --- ZEBRA STRIPING CSS --- */
+        /* Apply to tables with ID "maintenanceRecordsTable" for specific styling */
+        #maintenanceRecordsTable tbody tr:nth-child(odd) {
+            background-color: #f8f9fa !important; /* Light grey */
+        }
+
+        #maintenanceRecordsTable tbody tr:nth-child(even) {
+            background-color: #ffffff; /* White */
+        }
+        /* --- END OF ZEBRA STRIPING CSS --- */
+
+        /* Styles for table cells to ensure wrapping and vertical alignment */
+        #maintenanceRecordsTable td {
+            white-space: normal; /* Allow cell content to wrap */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            vertical-align: middle; /* Vertically align cell content in the middle */
+            padding: 0.5rem; /* Standard Bootstrap cell padding */
+        }
+
+            /* Specific styling for the actions column to keep buttons/links on one line */
+            #maintenanceRecordsTable td:last-child { /* Targets the last td in each row (actions column) */
+                white-space: nowrap; /* Prevent buttons/links from wrapping */
+                text-align: right; /* Align buttons/links to the right */
+            }
+    </style>
+}

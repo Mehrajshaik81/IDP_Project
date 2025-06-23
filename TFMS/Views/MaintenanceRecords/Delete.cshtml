@@ -1,0 +1,100 @@
+﻿@model TFMS.Models.Maintenance
+
+@{
+    ViewData["Title"] = "Delete Maintenance Record"; // Changed title for clarity
+}
+
+<div class="container content-container"> @* Added container for consistent styling *@
+    <h1>Delete Maintenance Record</h1>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vehicle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vehicle!.RegistrationNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ScheduledDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ScheduledDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Status.GetDescription() @* Use GetDescription() here for display *@
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ActualCompletionDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ActualCompletionDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OdometerReadingKm)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OdometerReadingKm)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PerformedBy)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PerformedBy)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaintenanceType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaintenanceType)
+        </dd>
+    </dl>
+
+    <div class="d-flex justify-content-start align-items-center mt-3"> @* Added flexbox for alignment and margin-top *@
+        <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
+            Delete
+        </button>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this Maintenance record permanently? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form asp-action="Delete" asp-route-id="@Model?.MaintenanceId" method="post" class="d-inline">
+                    <input type="hidden" asp-for="MaintenanceId" /> @* Keep this for the actual POST *@
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

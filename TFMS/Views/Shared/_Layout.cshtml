@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TFMS</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #284B63; /* Deep blue - This is your Navbar/FleetHub color */
+            --secondary: #f3f3f3;
+            --accent: #eb5e28; /* Your main orange accent */
+            --bg: #fffcf2;
+            --text-dark: #222;
+            --text-light: #fff;
+            --button-hover: #ca5123; /* Darker orange for accent button hover */
+            /* Define specific colors for your buttons here if different from Bootstrap defaults */
+            --btn-edit-color: var(--primary); /* Same as navbar */
+            --btn-details-color: var(--accent); /* Orange */
+            --btn-delete-color: #dc3545; /* Standard red */
+            --btn-status-color: #198754; /* Standard green */
+        }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            display: flex; /* Make body a flex container */
+            flex-direction: column; /* Stack children vertically */
+            min-height: 100vh; /* Ensure body takes full viewport height */
+        }
+
+        /* Admin Navbar styles - Applying homepage color scheme */
+        .navbar { /* Targeting the existing Bootstrap navbar */
+            background-color: var(--primary) !important; /* Override Bootstrap default bg-white */
+            border-bottom: none !important; /* Remove border from default Bootstrap */
+            padding-left: 1rem; /* Add some padding consistent with homepage */
+            padding-right: 1rem;
+        }
+
+        .navbar-brand {
+            color: var(--text-light) !important; /* Change brand color */
+            font-weight: bold;
+            font-size: 1.5rem; /* Slightly larger for the admin brand */
+        }
+
+            .navbar-brand:hover {
+                color: var(--accent) !important; /* Accent on hover */
+            }
+
+        .nav-link {
+            color: var(--text-light) !important; /* Change nav link color */
+            font-weight: 500;
+        }
+
+            .nav-link:hover {
+                color: var(--accent) !important; /* Accent on hover */
+            }
+
+        /* Active nav link (for the current page) */
+        .nav-item .nav-link.active {
+            color: var(--accent) !important;
+            border-bottom: 2px solid var(--accent); /* Subtle indicator for active page */
+            padding-bottom: calc(0.3125rem - 2px); /* Adjust padding to keep height consistent */
+        }
+
+        /* Common content container style for all main content areas */
+        .content-container {
+            padding: 2rem 1rem;
+            max-width: 1200px; /* Adjust as needed */
+            margin: 20px auto;
+            background-color: #f3f3f3; /* White background for content area */
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            flex-grow: 1; /* Allow content to grow and push footer down */
+        }
+
+        /* Form specific styles for consistency (already added to previous _Layout, ensuring they are here) */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-control, .form-select {
+            border-radius: 8px;
+            border: 1px solid #ffffff;
+            padding: 0.75rem 1rem;
+            background-color: white; /* Input box background to white */
+        }
+
+            .form-control:focus, .form-select:focus {
+                border-color: var(--primary);
+                box-shadow: 0 0 0 0.25rem rgba(40, 75, 99, 0.25);
+            }
+
+        /* Hide up/down arrows for number input fields */
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none; /* For Chrome, Safari, Edge, Opera */
+            margin: 0; /* Important to remove extra space */
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield; /* For Firefox */
+        }
+
+
+        /* Buttons consistent with homepage */
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--text-light);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: none;
+        }
+
+            .btn-accent:hover {
+                background-color: var(--button-hover);
+            }
+
+        /* Primary text for headings */
+        .text-primary {
+            color: var(--primary) !important;
+        }
+
+        /* Footer styles from homepage */
+        footer {
+            background-color: var(--primary); /* Changed to use var(--primary) */
+            color: #fff; /* Changed to use var(--text-light) */
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            margin-top: auto; /* Push footer to the bottom */
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.1); /* Add a subtle shadow to footer */
+        }
+
+            footer .container {
+                color: #fff; /* Example: Orange color for copyright text */
+            }
+
+        @@media (max-width: 768px) {
+            .navbar-collapse {
+                background-color: var(--primary); /* Keep background for collapsed menu */
+                border-radius: 0 0 10px 10px; /* Rounded bottom corners for collapsed menu */
+            }
+
+            .navbar-toggler-icon {
+                filter: brightness(0) invert(1); /* Make toggler icon white */
+            }
+        }
+
+        /* --- NEW/UPDATED STYLES FOR TABLE HEADER & BUTTONS --- */
+
+        /* Table Header Style */
+        .table thead.bg-primary { /* Bootstrap bg-primary combined with custom styling */
+            background-color: var(--primary) !important;
+            color: var(--text-light) !important;
+        }
+
+            .table thead.bg-primary th {
+                background-color: var(--primary) !important;
+                color: var(--text-light) !important;
+                border-color: var(--primary) !important; /* To make sure borders blend */
+            }
+        /* Ensure striped rows use custom colors */
+        .table-striped > tbody > tr:nth-of-type(odd) > * {
+            background-color: #f8f9fa !important; /* Light grey */
+        }
+
+        .table-striped > tbody > tr:nth-of-type(even) > * {
+            background-color: #ffffff !important; /* White */
+        }
+
+
+        /* Button Styles for Trips Page Actions */
+
+        /* Edit Button: Same as Navbar/Table Header (Primary Blue) */
+        .btn-outline-edit-custom {
+            color: var(--btn-edit-color);
+            border-color: var(--btn-edit-color);
+            background-color: transparent;
+        }
+
+            .btn-outline-edit-custom:hover {
+                color: var(--text-light);
+                background-color: var(--btn-edit-color);
+                border-color: var(--btn-edit-color);
+            }
+
+        /* Details Button: Orange */
+        .btn-outline-details-custom {
+            color: var(--btn-details-color);
+            border-color: var(--btn-details-color);
+            background-color: transparent;
+        }
+
+            .btn-outline-details-custom:hover {
+                color: var(--text-light);
+                background-color: var(--btn-details-color);
+                border-color: var(--btn-details-color);
+            }
+
+        /* Delete Button: Red */
+        .btn-outline-delete-custom {
+            color: var(--btn-delete-color);
+            border-color: var(--btn-delete-color);
+            background-color: transparent;
+        }
+
+            .btn-outline-delete-custom:hover {
+                color: var(--text-light);
+                background-color: var(--btn-delete-color);
+                border-color: var(--btn-delete-color);
+            }
+
+        /* Status Button: Green */
+        .btn-outline-status-custom {
+            color: var(--btn-status-color);
+            border-color: var(--btn-status-color);
+            background-color: transparent;
+        }
+
+            .btn-outline-status-custom:hover {
+                color: var(--text-light);
+                background-color: var(--btn-status-color);
+                border-color: var(--btn-status-color);
+            }
+
+        /* Styles for Filter/Reset Buttons (if btn-primary and btn-secondary are used for them) */
+        /* Override Bootstrap's default btn-primary to use your primary color */
+        .btn-primary {
+            background-color: var(--primary) !important;
+            border-color: var(--primary) !important;
+            color: var(--text-light) !important;
+        }
+
+            .btn-primary:hover {
+                background-color: #1a3243 !important; /* Slightly darker shade of primary on hover */
+                border-color: #1a3243 !important;
+            }
+
+        /* Override Bootstrap's default btn-secondary to use your desired secondary/outline style */
+        .btn-secondary {
+            background-color: transparent !important;
+            border-color: var(--primary) !important; /* Use primary for outline */
+            color: var(--primary) !important;
+        }
+
+            .btn-secondary:hover {
+                background-color: var(--primary) !important;
+                color: var(--text-light) !important;
+            }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    FleetHub
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"> <i class="bi bi-house me-1"></i>Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Vehicles" asp-action="Index"><i class="bi bi-truck me-1"></i>Vehicles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Trips" asp-action="Index"><i class="bi bi-signpost me-1"></i>Trips</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="FuelRecords" asp-action="Index"><i class="bi bi-fuel-pump me-1"></i>Fuel Records</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="MaintenanceRecords" asp-action="Index"><i class="bi bi-tools me-1"></i>Maintenance</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="PerformanceReports" asp-action="Index"><i class="bi bi-graph-up me-1"></i>Reports</a>
+                        </li>
+                       
+                        @if (User.IsInRole("Fleet Administrator"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Users"><i class="bi bi-person-gear me-1"></i>Admin Panel</a>
+                            </li>
+                           
+                        }
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer text-muted">
+        <div class="container">
+            &copy; 2025 - FleetHub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

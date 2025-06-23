@@ -1,0 +1,74 @@
+﻿@model TFMS.Models.Maintenance
+
+@{
+    ViewData["Title"] = "Schedule New Maintenance";
+}
+
+
+<div class="container content-container">
+    <h1 class="text-primary">Schedule New Maintenance</h1>
+    <hr />
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="VehicleId" class="control-label"></label>
+                <select asp-for="VehicleId" class="form-control" asp-items="ViewBag.VehicleId"></select>
+                <span asp-validation-for="VehicleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ScheduledDate" class="control-label"></label>
+                <input asp-for="ScheduledDate" class="form-control" type="date" />
+                <span asp-validation-for="ScheduledDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                @* Use asp-items with ViewBag.StatusOptions for enum dropdown *@
+                <select asp-for="Status" class="form-control" asp-items="ViewBag.StatusOptions"></select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActualCompletionDate" class="control-label"></label>
+                <input asp-for="ActualCompletionDate" class="form-control" type="date" />
+                <span asp-validation-for="ActualCompletionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cost" class="control-label"></label>
+                <input asp-for="Cost" class="form-control" />
+                <span asp-validation-for="Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OdometerReadingKm" class="control-label"></label>
+                <input asp-for="OdometerReadingKm" class="form-control" />
+                <span asp-validation-for="OdometerReadingKm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PerformedBy" class="control-label"></label>
+                <input asp-for="PerformedBy" class="form-control" />
+                <span asp-validation-for="PerformedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaintenanceType" class="control-label"></label>
+                <input asp-for="MaintenanceType" class="form-control" />
+                <span asp-validation-for="MaintenanceType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-accent" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

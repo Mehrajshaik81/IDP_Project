@@ -1,0 +1,161 @@
+﻿@model IEnumerable<TFMS.Models.FuelRecord>
+
+@{
+    ViewData["Title"] = "Fuel Records";
+}
+
+
+@* --- Search and Filter Section --- *@
+<div class="container content-container">
+    <h1 class="text-primary">Fuel Records</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-accent">Add New Fuel Record</a>
+    </p>
+
+    <form asp-controller="FuelRecords" asp-action="Index" method="get" class="mb-4">
+        <div class="row g-3 align-items-end">
+            <div class="col-md-3">
+                <label for="searchString" class="form-label">Search (Vehicle Reg No, Driver Email)</label>
+                <input type="text" name="searchString" value="@ViewData["CurrentSearchString"]" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label for="vehicleIdFilter" class="form-label">Filter by Vehicle</label>
+                <select name="vehicleIdFilter" class="form-select" asp-items="@ViewBag.VehicleFilterList"></select>
+            </div>
+            <div class="col-md-3">
+                <label for="driverIdFilter" class="form-label">Filter by Driver</label>
+                <select name="driverIdFilter" class="form-select" asp-items="@ViewBag.DriverFilterList"></select>
+            </div>
+            <div class="col-md-3">
+                <label for="dateFilter" class="form-label">Fueling Date</label>
+                <input type="date" name="dateFilter" value="@ViewData["CurrentDateFilter"]" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-outline-primary">Apply Filters</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">Clear Filters</a>
+            </div>
+        </div>
+    </form>
+    @* --- End Search and Filter Section --- *@
+
+    <table class="table table-hover" id="fuelRecordsTable">
+        @* Added id and table-hover *@
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Driver)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FuelQuantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OdometerReadingKm)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vehicle!.RegistrationNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Driver!.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FuelQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OdometerReadingKm)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        <div class="d-flex flex-row justify-content-start flex-nowrap">
+                            @* Added flex-nowrap for actions *@
+                            @if (User.IsInRole("Fleet Administrator"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.FuelId" class="btn btn-sm btn-primary me-1"><i class="bi bi-pencil-square"></i> Edit</a> @* Added button classes and icons *@
+                                <a asp-action="Details" asp-route-id="@item.FuelId" class="btn btn-sm btn-info me-1"><i class="bi bi-info-circle"></i> Details</a> @* Added button classes and icons *@
+                                <a asp-action="Delete" asp-route-id="@item.FuelId" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</a> @* Added button classes and icons *@
+                            }
+                            else
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.FuelId" class="btn btn-sm btn-primary me-1"><i class="bi bi-pencil-square"></i> Edit</a> @* Added button classes and icons *@
+                                <a asp-action="Details" asp-route-id="@item.FuelId" class="btn btn-sm btn-info"><i class="bi bi-info-circle"></i> Details</a> @* Added button classes and icon *@
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <style>
+
+        /* --- TABLE HEADER STYLES (Applied to all tables with class "table") --- */
+        .table thead th {
+            background-color: var(--primary) !important; /* Use primary blue */
+            color: var(--text-light) !important; /* White text */
+            border-color: var(--primary) !important; /* Blue border */
+            white-space: normal; /* Allow header text to wrap */
+            padding: 0.75rem; /* Standard Bootstrap padding, adjust if needed */
+            text-align: left; /* Align text to the left */
+            vertical-align: middle; /* Vertically align text in the middle */
+        }
+        /* --- END TABLE HEADER STYLES --- */
+
+        /* --- ZEBRA STRIPING CSS --- */
+        /* Apply to tables with ID "fuelRecordsTable" for specific styling */
+        #fuelRecordsTable tbody tr:nth-child(odd) {
+            background-color: #f8f9fa !important; /* Light grey */
+        }
+
+        #fuelRecordsTable tbody tr:nth-child(even) {
+            background-color: #ffffff; /* White */
+        }
+        /* --- END OF ZEBRA STRIPING CSS --- */
+
+        /* Styles for table cells to ensure wrapping and vertical alignment */
+        #fuelRecordsTable td {
+            white-space: normal; /* Allow cell content to wrap */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            vertical-align: middle; /* Vertically align cell content in the middle */
+            padding: 0.5rem; /* Standard Bootstrap cell padding */
+        }
+
+            /* Specific styling for the actions column to keep buttons/links on one line */
+            #fuelRecordsTable td:last-child { /* Targets the last td in each row (actions column) */
+                white-space: nowrap; /* Prevent buttons/links from wrapping */
+                text-align: right; /* Align buttons/links to the right */
+            }
+    </style>
+}
