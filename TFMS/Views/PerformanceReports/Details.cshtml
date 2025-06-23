@@ -1,8 +1,8 @@
 ﻿<!-- Views/PerformanceReports/Details.cshtml (with Charts) -->
 @model TFMS.Models.PerformanceReport 
 @* Ensure this is your correct namespace *@
-@using Newtonsoft.Json // For parsing the Data attribute
-@using Newtonsoft.Json.Linq // For JArray/JObject support
+@using Newtonsoft.Json 
+@using Newtonsoft.Json.Linq 
 
 @{
     ViewData["Title"] = "Report Details: " + Model.ReportType;
@@ -143,7 +143,7 @@
     }
 </div>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class = "btn btn-danger" asp-action="Index">Back to List</a>
     @if (User.IsInRole("Fleet Administrator"))
     {
         <a asp-action="Delete" asp-route-id="@Model.PerformanceId" class="btn btn-danger float-right">Delete Report</a>

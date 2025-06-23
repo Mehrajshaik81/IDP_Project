@@ -7,10 +7,10 @@
 <div class="container content-container mt-4">
     @* Added content-container and mt-4 for top margin *@
 
-    <h1>Vehicles</h1>
+    <h1 class="text-primary">Vehicles</h1>
 
     <p>
-        <a asp-action="Create" class="btn btn-accent">Add New Vehicle</a> @* Changed to btn-primary for consistency with images *@
+        <a asp-action="Create" class="btn btn-md btn-outline-details-custom">Add New Vehicle</a> @* Changed to btn-primary for consistency with images *@
     </p>
 
     @* --- Search and Filter Section --- *@
@@ -40,7 +40,7 @@
         </form>
         @* --- End Search and Filter Section --- *@
 
-        <table class="table table-hover" id="vehiclesTable">
+    <table class="table table-hover table-striped" id="vehiclesTable">
             @* Added id="vehiclesTable" and table-hover *@
             <thead>
                 <tr>
@@ -109,9 +109,15 @@
 
                             <div class="d-flex flex-nowrap justify-content-end">
                                 @* Using d-flex and flex-nowrap for horizontal alignment without wrapping and right-aligning *@
-                                <a asp-action="Edit" asp-route-id="@item.VehicleId" class="btn btn-sm btn-primary me-1"><i class="bi bi-pencil-square"></i> Edit</a> @* Changed to btn-primary and added icon*@
-                                <a asp-action="Details" asp-route-id="@item.VehicleId" class="btn btn-sm btn-info me-1"><i class="bi bi-info-circle"></i> Details</a> @* Changed to btn-info and added icon*@
-                                <a asp-action="Delete" asp-route-id="@item.VehicleId" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</a> @* Added icon*@
+                            <a asp-action="Edit" asp-route-id="@item.VehicleId" class="btn btn-action-small btn-outline-primary-custom me-1" title="Edit">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a asp-action="Details" asp-route-id="@item.VehicleId" class="btn btn-sm btn-outline-details-custom">
+                                <i class="bi bi-info-circle me-1"></i>Details
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.VehicleId" class="btn btn-action-small btn-outline-danger-custom" title="Delete">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
                             </div>
                         </td>
                     </tr>
@@ -133,10 +139,14 @@
             border-color: var(--primary) !important; /* Blue border */
             white-space: normal; /* Allow header text to wrap */
             padding: 0.75rem; /* Standard Bootstrap padding, adjust if needed */
-            text-align: left; /* Align text to the left */
-            vertical-align: middle; /* Vertically align text in the middle */
+            text-align: center;
+            vertical-align: middle; 
         }
         /* --- END TABLE HEADER STYLES --- */
+
+        .table tbody tr{
+            text-align: center;
+        }
 
         /* --- ZEBRA STRIPING CSS --- */
         #vehiclesTable tbody tr:nth-child(odd) {
@@ -170,8 +180,8 @@
 
         .sort-icon {
             margin-left: 5px;
-            display: inline-block; /* Ensure it respects margin-left */
-            min-width: 10px; /* Give it some space even when empty */
+            /* display: inline-block; /* Ensure it respects margin-left */ */
+            /* min-width: 10px; /* Give it some space even when empty */  */
         }
 
         .sort-asc::after {
@@ -181,6 +191,93 @@
         .sort-desc::after {
             content: "\25BC"; /* Down arrow */
         }
+
+        .btn-outline-primary-custom {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            background-color: transparent;
+        }
+
+            .btn-outline-primary-custom:hover {
+                background-color: var(--primary);
+                color: var(--text-light);
+            }
+
+    .btn-accent {
+        background-color: var(--accent);
+        color: var(--text-light);
+        border-radius: 8px;
+        padding: 0.6rem 1.5rem;
+        font-weight: 600;
+        transition: all 0.2s;
+        border: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+        .btn-accent:hover {
+            background-color: var(--button-hover);
+            color: var(--text-light);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+    .btn-secondary-outline {
+        background-color: transparent;
+        color: var(--primary);
+        border: 1px solid var(--primary);
+        border-radius: 8px;
+        padding: 0.6rem 1.2rem;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+
+        .btn-secondary-outline:hover {
+            background-color: var(--primary);
+            color: var(--text-light);
+        }
+
+    .btn-action-small {
+        padding: 0.3rem 0.5rem;
+        border-radius: 5px;
+        font-size: 0.85rem;
+        margin-left: 0.15rem;
+        transition: all 0.2s;
+        white-space: nowrap;
+    }
+
+    .btn-outline-primary-custom {
+        color: var(--primary);
+        border: 1px solid var(--primary);
+        background-color: transparent;
+    }
+
+        .btn-outline-primary-custom:hover {
+            background-color: var(--primary);
+            color: var(--text-light);
+        }
+
+    .btn-outline-info-custom {
+        color: var(--accent);
+        border: 1px solid var(--accent);
+        background-color: transparent;
+    }
+
+        .btn-outline-info-custom:hover {
+            background-color: var(--accent);
+            color: var(--text-light);
+        }
+
+    .btn-outline-danger-custom {
+        color: #dc3545;
+        border: 1px solid #dc3545;
+        background-color: transparent;
+    }
+
+        .btn-outline-danger-custom:hover {
+            background-color: #dc3545;
+            color: var(--text-light);
+        }
+
+        
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>

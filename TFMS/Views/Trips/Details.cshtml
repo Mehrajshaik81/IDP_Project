@@ -140,6 +140,16 @@
         }
 
         /* --- Button Styles --- */
+        .editButton {
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            background-color: transparent;
+        }
+
+            .editButton:hover {
+                background-color: var(--accent);
+                color: var(--text-light);
+            }
         .btn-accent {
             background-color: var(--accent);
             color: var(--text-light);
@@ -408,6 +418,8 @@
         }
 
         }
+
+        
         /* End of CSS Styles */
     </style>
 </head>
@@ -512,12 +524,12 @@
                 @* Using col-auto to wrap content and allow buttons to size themselves within *@
                 @if (User.IsInRole("Fleet Administrator") || User.IsInRole("Fleet Operator"))
                 {
-                    <a asp-action="Edit" asp-route-id="@Model?.TripId" class="btn btn-outline-primary-custom w-100 btn-action-small">Edit</a>
+                    <a asp-action="Edit" asp-route-id="@Model?.TripId" class="btn btn-sm btn-outline-details-custom editButton">Edit</a>
                 }
             </div>
             <div class="col-auto">
                 @* Using col-auto for the second button as well *@
-                <a asp-action="Index" class="btn btn-secondary-outline w-100 btn-action-small">Back to List</a>
+                <a asp-action="Index" class="btn btn-action-small btn-outline-primary-custom">Back to List</a>
             </div>
         </div>
     </div>

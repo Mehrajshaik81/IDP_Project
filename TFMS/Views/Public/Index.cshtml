@@ -1,0 +1,337 @@
+﻿@using TFMS.Data
+@{
+    ViewData["Title"] = "HomePage";
+}
+
+<style>
+    :root {
+        --primary: #284B63;
+        --secondary: #f3f3f3;
+        --accent: #eb5e28;
+        --bg: #fffcf2;
+        --text-dark: #222;
+        --text-light: #fff;
+        --button-hover: #ca5123;
+    }
+
+    body {
+        background-color: var(--bg);
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: var(--text-dark);
+    }
+
+    .navbar {
+        background-color: var(--primary);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        color: var(--text-light);
+        font-weight: bold;
+        font-size: 1.8rem;
+        text-decoration: none;
+    }
+
+        .navbar-brand img {
+            height: 2.5rem;
+            margin-right: 10px;
+        }
+
+    .navbar-brand-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+    }
+
+    .navbar-brand small {
+        font-size: 0.8rem;
+        color: #ddd;
+        font-family: 'Georgia', serif;
+    }
+
+    .nav-link {
+        color: var(--text-light) !important;
+        font-weight: 500;
+    }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+
+    .navbar-icon-spacing {
+        margin-right: 10px; /* Adjust this value as needed */
+    }
+
+    .dropdown-menu {
+        border: none;
+        border-radius: 10px;
+        padding: 1rem;
+        background: var(--bg);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateY(10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        min-width: 500px;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .dropdown-item-custom {
+        color: var(--text-dark);
+        border-radius: 8px;
+        padding: 0.6rem;
+        transition: background 0.2s;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        text-decoration: none;
+    }
+
+        .dropdown-item-custom:hover {
+            background-color: var(--secondary);
+            color: var(--accent);
+        }
+
+        .dropdown-item-custom i {
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+    .btn-accent {
+        background-color: var(--accent);
+        color: var(--text-light);
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+
+        .btn-accent:hover {
+            background-color: var(--button-hover);
+        }
+
+    .hero {
+        padding: 6rem 1rem 4rem;
+        text-align: center;
+        background: linear-gradient(to bottom, var(--bg), #fff6ec);
+    }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 1rem auto;
+            color: var(--text-dark);
+        }
+
+    .grid-cols {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+    }
+
+    footer {
+        background-color: #284B63;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .section-container {
+        padding: 3rem 1rem 3rem;
+        text-align: center;
+        background: linear-gradient(to bottom, var(--bg), #fff6ec);
+    }
+
+        .section-container h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .section-container p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 1rem auto;
+            color: var(--text-dark);
+        }
+
+    .section-container {
+        padding: 3rem 1rem 3rem;
+        text-align: center;
+        background: linear-gradient(to bottom, var(--bg), #fff6ec);
+    }
+
+        .section-container h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .section-container p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 1rem auto;
+            color: var(--text-dark);
+        }
+
+    .contact-details {
+        margin: 1rem auto;
+        font-size: 1.1rem;
+    }
+
+        .contact-details a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .contact-details a:hover {
+                color: var(--accent);
+            }
+
+    .fleet-layout {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 4rem 2rem;
+    }
+
+    .image-content {
+        flex: 1;
+        text-align: center;
+    }
+
+        .image-content img {
+            width: 100%;
+            max-width: 500px; /* Adjust for desired size */
+            height: auto;
+            border-radius: 10px;
+        }
+
+    .cards {
+        width=100%;
+    }
+
+    .text-content {
+        flex: 1;
+        text-align: left;
+    }
+
+
+    @@media (max-width: 768px) {
+        .dropdown-menu
+
+    {
+        left: 0;
+        transform: translateX(0);
+        min-width: 100%;
+    }
+
+    }
+</style>
+
+<div class="cards">
+    <section class="hero">
+        <h1>FleetHub</h1>
+        <p><b>Experience the next generation of fleet management with our intuitive platform. Track, analyze, and optimize your vehicles like never before.</b></p>
+    </section>
+    <section class="section-container" id="smart-fleet-manager">
+        <div class="container fleet-layout">
+            <div class="text-content">
+                <h1>What is Smart Fleet Management System?!</h1>
+                <p>Smart fleet management is a comprehensive approach that integrates advanced technologies to monitor, analyze, and optimize the operations of vehicle fleets.</p>
+                <p>Are you curious about the role of smart fleet management? This dynamic approach revolves around optimizing work vehicle coordination and organization within companies. Its primary goal is to enhance efficiency, minimize expenses, and ensure seamless compliance with governmental regulations.</p>
+            </div>
+            <div class="image-content">
+                <img src="~/images/smart fleet management.jpg" alt="Fleet Management" />
+            </div>
+        </div>
+    </section>
+
+    <section class="section-container" id="fuel-intelligent-system">
+        <div class="container fleet-layout">
+            <div class="image-content">
+                <img src="~/images/fuel.png" alt="Fuel Management" />
+            </div>
+            <div class="text-content">
+                <h1>Fuel Intelligence System – Smarter Fuel, Bigger Savings</h1>
+                <p>Efficient fuel management is the backbone of cost-effective fleet operations, and that’s exactly where our Fuel Intelligence System steps in. Designed to monitor, analyze, and optimize fuel usage, our system empowers businesses to reduce expenses while improving overall operational efficiency.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section-container" id="trip-scheduler">
+        <div class="container fleet-layout">
+            <div class="text-content">
+                <h1>Trip Scheduler & Route Optimizer – Smarter Routes, Effortless Planning</h1>
+                <p>Maximize efficiency and minimize costs with our Trip Scheduler & Route Optimizer. Whether managing deliveries, transportation, or logistics, our intelligent system ensures optimal route planning, fuel savings, and hassle-free scheduling.</p>
+            </div>
+            <div class="image-content">
+                <img src="~/images/smart route.jpg" alt="Trip Scheduler & Route Optimizer" />
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section-container" id="maintenance-tracker">
+        <div class="container fleet-layout">
+            <div class="image-content">
+                <img src="~/images/maintenance.png" alt="Maintenance & Health Tracker" />
+            </div>
+            <div class="text-content">
+                <h1>Maintenance & Health Tracker – Keep Your Fleet Running Smoothly</h1>
+                <p>Unexpected breakdowns and costly repairs can disrupt operations and drain resources. Our Maintenance & Health Tracker ensures you stay ahead of vehicle issues with predictive maintenance alerts, automated logs, and proactive health monitoring.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-container" id="fleet-analytics">
+        <div class="container fleet-layout">
+            <div class="text-content">
+                <h1>Fleet Analytics & Reports – Data-Driven Insights for Smarter Decisions</h1>
+                <p>Unlock the full potential of your fleet with our Fleet Analytics & Reports system. Designed to track, analyze, and optimize vehicle performance, our solution provides detailed reports that empower businesses to enhance operations, reduce costs, and improve overall efficiency.</p>
+            </div>
+            <div class="image-content">
+                <img src="~/images/fleet analytics.png" alt="Fleet Analytics & Reports" />
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section-container" id="contact-us">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Have questions or need assistance? We're here to help! Reach out to us, and we'll get back to you as soon as possible.</p>
+            <div class="contact-details">
+                <p><strong>Email:</strong> <a href="mailto:support@fleethub.com">support@fleethub.com</a></p>
+                <p><strong>Phone:</strong> +91 23857294</p>
+                <p><strong>Address:</strong> 123 FleetHub Building, Chennai, India</p>
+            </div>
+            <a href="mailto:support@fleethub.com" class="btn btn-accent mt-4">Send Us an Email</a>
+        </div>
+    </section>
+</div>
+

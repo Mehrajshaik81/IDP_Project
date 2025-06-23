@@ -34,12 +34,12 @@ namespace TFMS.Models // Your correct namespace
         [StringLength(100)]
         public string Model { get; set; } = string.Empty;
 
-        [Display(Name = "MFG")]
+        [Display(Name = "Year")]
         public int ManufacturingYear { get; set; } // This should be non-nullable, as year is a definite number
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Fuel")]
+        [Display(Name = "Fuel Capacity")]
         public string FuelType { get; set; } = "Petrol"; // e.g., Petrol, Diesel, Electric
 
         [Display(Name = "Odometer")]

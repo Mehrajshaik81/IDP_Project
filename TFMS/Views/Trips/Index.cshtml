@@ -7,20 +7,20 @@
 }
 
 
-<div class="container content-container">
+<div class="container content-container mt-4">
     <h1 class="text-primary">Trips</h1>
 
     <p>
         @if (User.IsInRole("Fleet Administrator") || User.IsInRole("Fleet Operator"))
         {
-            <a asp-action="Create" class="btn btn-accent">Create New Trip</a>
+            <a asp-action="Create" class="btn btn-md btn-outline-details-custom">Create New Trip</a>
         }
     </p>
     <form asp-action="Index" method="get" class="mb-4">
         <div class="row g-3 align-items-end">
             <div class="col-md-4 col-lg-3">
-                <label for="searchString" class="form-label">Search:</label>
-                <input type="text" name="searchString" class="form-control" value="@ViewBag.CurrentSearchString" placeholder="Start/End Location, Vehicle, Driver" />
+                <label for="searchString" class="form-label">Search (Location, Vehicle, Driver):</label>
+                <input type="text" name="searchString" class="form-control" value="@ViewBag.CurrentSearchString"/>
             </div>
             <div class="col-md-4 col-lg-2">
                 <label for="statusFilter" class="form-label">Status:</label>
@@ -52,9 +52,8 @@
         </div>
     </form>
 
-    <table class="table table-hover" id="tripsTable">
-        
-            @* <<< This line already had the class, which is good! *@
+    <table class="table table-hover table-striped" id="tripsTable">
+        <thead>
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Vehicle)
@@ -79,7 +78,7 @@
                 </th>
                 <th></th>
             </tr>
-        </>
+        </thead>
         <tbody>
             @foreach (var item in Model)
             {
@@ -107,18 +106,18 @@
                     </td>
                     <td>
                         <div class="d-flex flex-row justify-content-start flex-nowrap">
-                            <a asp-action="Edit" asp-route-id="@item.TripId" class="btn btn-sm btn-primary me-1" title="Edit">
+                            <a asp-action="Edit" asp-route-id="@item.TripId" class="btn btn-action-small btn-outline-primary-custom me-1" title="Edit">
                                 <i class="bi bi-pencil-square"></i> Edit
                             </a>
-                            <a asp-action="Details" asp-route-id="@item.TripId" class="btn btn-sm btn-info me-1" title="Details">
+                            <a asp-action="Details" asp-route-id="@item.TripId" class="btn btn-sm btn-outline-details-custom" title="Details">
                                 <i class="bi bi-info-circle"></i> Details
                             </a>
-                            <a asp-action="Delete" asp-route-id="@item.TripId" class="btn btn-sm btn-danger me-1" title="Delete">
+                            <a asp-action="Delete" asp-route-id="@item.TripId" class="btn btn-action-small btn-outline-danger-custom me-1" title="Delete">
                                 <i class="bi bi-trash"></i> Delete
                             </a>
                             @if (User.IsInRole("Fleet Administrator") || User.IsInRole("Fleet Operator") || (User.IsInRole("Driver") && item.DriverId == User.FindFirst(ClaimTypes.NameIdentifier)?.Value))
                             {
-                                <a asp-action="UpdateStatus" asp-route-id="@item.TripId" class="btn btn-sm btn-success" title="Update Status">
+                                <a asp-action="UpdateStatus" asp-route-id="@item.TripId" class="btn btn-sm btn-success statusButton" title="Update Status">
                                     <i class="bi bi-arrow-repeat"></i> Status
                                 </a>
                             }
@@ -138,13 +137,13 @@
 
     <style>
         /* Table Header Color (your existing rule, slightly adjusted for consistency) */
-        .table-header-blue {
+        .table thead th {
             background-color: var(--primary) !important; /* Use primary blue variable for consistency */
             color: var(--text-light) !important; /* White text */
             border-color: var(--primary) !important; /* Blue border */
             white-space: normal; /* This can be 'nowrap' if you want to prevent header text wrapping */
             padding: 0.75rem;
-            text-align: left;
+            text-align: center;
             vertical-align: middle;
         }
 
@@ -157,6 +156,10 @@
             background-color: #ffffff; /* White */
         }
         /* --- END OF ZEBRA STRIPING CSS --- */
+
+        .table tbody tr {
+            text-align: center;
+        }
 
         /* Styles for table cells to ensure wrapping and vertical alignment */
         #tripsTable td {
@@ -175,7 +178,104 @@
 
         /* Adjust button margins for better spacing */
         .btn-sm + .btn-sm {
-            margin-left: 0.25rem; /* Small margin between consecutive small buttons */
+            /* margin-left: 0.25rem; /* Small margin between consecutive small buttons */ */
         }
+
+        .btn-outline-primary-custom {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            background-color: transparent;
+        }
+
+            .btn-outline-primary-custom:hover {
+                background-color: var(--primary);
+                color: var(--text-light);
+            }
+
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--text-light);
+            border-radius: 8px;
+            padding: 0.6rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+            .btn-accent:hover {
+                background-color: var(--button-hover);
+                color: var(--text-light);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+
+        .btn-secondary-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+            .btn-secondary-outline:hover {
+                background-color: var(--primary);
+                color: var(--text-light);
+            }
+
+        .btn-action-small {
+            padding: 0.3rem 0.5rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            margin-left: 0.15rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-outline-primary-custom {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            background-color: transparent;
+        }
+
+            .btn-outline-primary-custom:hover {
+                background-color: var(--primary);
+                color: var(--text-light);
+            }
+
+        .btn-outline-info-custom {
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            background-color: transparent;
+        }
+
+            .btn-outline-info-custom:hover {
+                background-color: var(--accent);
+                color: var(--text-light);
+            }
+
+        .statusButton {
+            color: #154734;
+            border: 1px solid #154734;
+            background-color: transparent;
+        }
+
+        .statusButtons {
+            background-color: #5cb85c;
+                color: var(--text-light);
+            }
+
+        .btn-outline-danger-custom {
+            color: #dc3545;
+            border: 1px solid #dc3545;
+            background-color: transparent;
+        }
+
+            .btn-outline-danger-custom:hover {
+                background-color: #dc3545;
+                color: var(--text-light);
+            }
     </style>
 }

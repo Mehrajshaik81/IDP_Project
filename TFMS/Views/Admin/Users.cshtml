@@ -1,532 +1,520 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fleet Hub - Manage Users</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        /*
-                 * Start of CSS Styles
-                 * Pay close attention to matching curly braces {}
-                 */
+﻿ @model IEnumerable<TFMS.ViewModels.UserViewModel>
 
-        :root {
-            --primary: #284B63; /* Dark Blue (Navy Blue) */
-            --secondary: #f3f3f3; /* Light Grey */
-            --accent: #eb5e28; /* Orange */
-            --bg: #fffcf2; /* Off-White/Cream */
-            --text-dark: #222; /* Dark Grey Text */
-            --text-light: #fff; /* White Text */
-            --button-hover: #ca5123; /* Darker Orange on hover */
-            --table-header-text: var(--text-light); /* Table header text (should be white) */
+@{
+    ViewData["Title"] = "Manage Users";
+}
+<style>
+    /*
+                * Start of CSS Styles
+                * Pay close attention to matching curly braces {}
+                */
+
+    :root {
+        --primary: #284B63; /* Dark Blue (Navy Blue) */
+        --secondary: #f3f3f3; /* Light Grey */
+        --accent: #eb5e28; /* Orange */
+        --bg: #fffcf2; /* Off-White/Cream */
+        --text-dark: #222; /* Dark Grey Text */
+        --text-light: #fff; /* White Text */
+        --button-hover: #ca5123; /* Darker Orange on hover */
+        --table-header-text: var(--text-light); /* Table header text (should be white) */
+    }
+
+    body {
+        background-color: var(--bg);
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: var(--text-dark);
+    }
+
+    /* --- Navbar Styles --- */
+    .navbar {
+        background-color: var(--primary);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        color: var(--text-light);
+        font-weight: bold;
+        font-size: 1.8rem;
+        text-decoration: none;
+    }
+
+        .navbar-brand img {
+            height: 2.5rem;
+            margin-right: 10px;
         }
 
-        body {
-            background-color: var(--bg);
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: var(--text-dark);
+    .navbar-brand-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+    }
+
+    .navbar-brand small {
+        font-size: 0.8rem;
+        color: #ddd;
+        font-family: 'Georgia', serif;
+    }
+
+    .nav-link {
+        color: var(--text-light) !important;
+        font-weight: 500;
+    }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
         }
 
-        /* --- Navbar Styles --- */
-        .navbar {
-            background-color: var(--primary);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+    .navbar-icon-spacing {
+        margin-right: 10px; /* Adjust this value as needed */
+    }
+
+    .dropdown-menu {
+        border: none;
+        border-radius: 10px;
+        padding: 1rem;
+        background: var(--bg);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateY(10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        min-width: 500px;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .dropdown-item-custom {
+        color: var(--text-dark);
+        border-radius: 8px;
+        padding: 0.6rem;
+        transition: background 0.2s;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        text-decoration: none;
+    }
+
+        .dropdown-item-custom:hover {
+            background-color: var(--secondary);
+            color: var(--accent);
         }
 
-        .navbar-brand {
-            display: flex;
-            align-items: center;
+        .dropdown-item-custom i {
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+    /* --- End Navbar Styles --- */
+
+    /* --- General Section/Container Styles --- */
+    .main-content-wrapper {
+        padding: 0.5rem 2rem 3rem; /* Reduced top padding from 1.5rem to 0.5rem */
+        max-width: 1300px;
+        margin: 0 auto;
+        background-color: var(--bg);
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--primary);
+        text-align: left;
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    /* --- Button Styles --- */
+    .btn-accent {
+        background-color: var(--accent);
+        color: var(--text-light);
+        border-radius: 8px;
+        padding: 0.6rem 1.5rem;
+        font-weight: 600;
+        transition: all 0.2s;
+        border: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+        .btn-accent:hover {
+            background-color: var(--button-hover);
             color: var(--text-light);
-            font-weight: bold;
-            font-size: 1.8rem;
-            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
-            .navbar-brand img {
-                height: 2.5rem;
-                margin-right: 10px;
+    .btn-secondary-outline {
+        background-color: transparent;
+        color: var(--primary);
+        border: 1px solid var(--primary);
+        border-radius: 8px;
+        padding: 0.6rem 1.2rem;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+
+        .btn-secondary-outline:hover {
+            background-color: var(--primary);
+            color: var(--text-light);
+        }
+
+    .btn-action-small {
+        padding: 0.3rem 0.5rem;
+        border-radius: 5px;
+        font-size: 0.85rem;
+        margin-left: 0.15rem;
+        transition: all 0.2s;
+        white-space: nowrap;
+    }
+
+    .btn-outline-primary-custom {
+        color: var(--primary);
+        border: 1px solid var(--primary);
+        background-color: transparent;
+    }
+
+        .btn-outline-primary-custom:hover {
+            background-color: var(--primary);
+            color: var(--text-light);
+        }
+
+    .btn-outline-info-custom {
+        color: var(--accent);
+        border: 1px solid var(--accent);
+        background-color: transparent;
+    }
+
+        .btn-outline-info-custom:hover {
+            background-color: var(--accent);
+            color: var(--text-light);
+        }
+
+    .btn-outline-danger-custom {
+        color: #dc3545;
+        border: 1px solid #dc3545;
+        background-color: transparent;
+    }
+
+        .btn-outline-danger-custom:hover {
+            background-color: #dc3545;
+            color: var(--text-light);
+        }
+
+    /* --- Filter Form Styles --- */
+    .form-filter-container {
+        background-color: var(--secondary);
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+    }
+
+    .form-label-custom {
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .form-control-custom,
+    .form-select-custom {
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+        color: var(--text-dark);
+        background-color: var(--text-light);
+        width: 100%;
+    }
+
+        .form-control-custom:focus,
+        .form-select-custom:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(40, 75, 99, 0.25);
+            outline: none;
+        }
+
+    /* --- Table Styles --- */
+    .table-responsive-custom {
+        margin-bottom: 3rem;
+    }
+
+    .table-custom {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        background-color: var(--text-light);
+    }
+
+        .table-custom thead {
+            background-color: var(--primary) !important;
+            color: var(--table-header-text);
+        }
+
+        .table-custom th {
+            background-color: var(--primary);
+            padding: 1rem 0.8rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-align: center; /* Center align header text */
+            white-space: nowrap; /* Prevent line breaks */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Add ellipsis for overflow text */
+        }
+
+        .table-custom tbody tr {
+            border-bottom: 1px solid var(--secondary);
+            transition: background-color 0.2s ease;
+        }
+
+            .table-custom tbody tr:last-child {
+                border-bottom: none;
             }
 
-        .navbar-brand-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-
-        .navbar-brand small {
-            font-size: 0.8rem;
-            color: #ddd;
-            font-family: 'Georgia', serif;
-        }
-
-        .nav-link {
-            color: var(--text-light) !important;
-            font-weight: 500;
-        }
-
-            .nav-link:hover {
-                color: var(--accent) !important;
-            }
-
-        .navbar-icon-spacing {
-            margin-right: 10px; /* Adjust this value as needed */
-        }
-
-        .dropdown-menu {
-            border: none;
-            border-radius: 10px;
-            padding: 1rem;
-            background: var(--bg);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transform: translateY(10px);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            min-width: 500px;
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block;
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .dropdown-item-custom {
-            color: var(--text-dark);
-            border-radius: 8px;
-            padding: 0.6rem;
-            transition: background 0.2s;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            text-decoration: none;
-        }
-
-            .dropdown-item-custom:hover {
+            .table-custom tbody tr:hover {
                 background-color: var(--secondary);
+            }
+
+        .table-custom td {
+            padding: 0.8rem 0.8rem;
+            vertical-align: middle;
+            text-align: center; /* Center align cell text */
+            white-space: nowrap; /* Prevent line breaks */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Add ellipsis for overflow text */
+        }
+
+            .table-custom th:last-child,
+            .table-custom td:last-child {
+                text-align: center; /* Center align last column (Actions) */
+                padding-right: 0.8rem; /* Adjusted for centering, original was 1.5rem */
+                white-space: nowrap;
+            }
+
+    /* --- Footer Styles --- */
+    footer {
+        background-color: #284B63;
+        color: white;
+        text-align: center;
+        padding: 8px; /* Reduced padding from 15px to 8px */
+        font-size: 12px; /* Reduced font-size from 14px to 12px */
+    }
+
+    /* Additional Home Page CSS (keeping for context, but not directly used on Trips) */
+    .hero {
+        padding: 6rem 1rem 4rem;
+        text-align: center;
+        background: linear-gradient(to bottom, var(--bg), #fff6ec);
+    }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 1rem auto;
+            color: var(--text-dark);
+        }
+
+    .grid-cols {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+    }
+
+    .section-container {
+        padding: 3rem 1rem 3rem;
+        text-align: center;
+        background: linear-gradient(to bottom, var(--bg), #fff6ec);
+    }
+
+        .section-container h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .section-container p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 1rem auto;
+            color: var(--text-dark);
+        }
+
+    .contact-details {
+        margin: 1rem auto;
+        font-size: 1.1rem;
+    }
+
+        .contact-details a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .contact-details a:hover {
                 color: var(--accent);
             }
 
-            .dropdown-item-custom i {
-                font-size: 1.3rem;
-                color: var(--primary);
-            }
-        /* --- End Navbar Styles --- */
-
-        /* --- General Section/Container Styles --- */
-        .main-content-wrapper {
-            padding: 0.5rem 2rem 3rem; /* Reduced top padding from 1.5rem to 0.5rem */
-            max-width: 1300px;
-            margin: 0 auto;
-            background-color: var(--bg);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            text-align: left;
-            margin-top: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        /* --- Button Styles --- */
-        .btn-accent {
-            background-color: var(--accent);
-            color: var(--text-light);
-            border-radius: 8px;
-            padding: 0.6rem 1.5rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            border: none;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-            .btn-accent:hover {
-                background-color: var(--button-hover);
-                color: var(--text-light);
-                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            }
-
-        .btn-secondary-outline {
-            background-color: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            border-radius: 8px;
-            padding: 0.6rem 1.2rem;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-            .btn-secondary-outline:hover {
-                background-color: var(--primary);
-                color: var(--text-light);
-            }
-
-        .btn-action-small {
-            padding: 0.3rem 0.5rem;
-            border-radius: 5px;
-            font-size: 0.85rem;
-            margin-left: 0.15rem;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .btn-outline-primary-custom {
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            background-color: transparent;
-        }
-
-            .btn-outline-primary-custom:hover {
-                background-color: var(--primary);
-                color: var(--text-light);
-            }
-
-        .btn-outline-info-custom {
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            background-color: transparent;
-        }
-
-            .btn-outline-info-custom:hover {
-                background-color: var(--accent);
-                color: var(--text-light);
-            }
-
-        .btn-outline-danger-custom {
-            color: #dc3545;
-            border: 1px solid #dc3545;
-            background-color: transparent;
-        }
-
-            .btn-outline-danger-custom:hover {
-                background-color: #dc3545;
-                color: var(--text-light);
-            }
-
-        /* --- Filter Form Styles --- */
-        .form-filter-container {
-            background-color: var(--secondary);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
-        }
-
-        .form-label-custom {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .form-control-custom,
-        .form-select-custom {
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            padding: 0.5rem 0.75rem;
-            font-size: 1rem;
-            color: var(--text-dark);
-            background-color: var(--text-light);
-            width: 100%;
-        }
-
-            .form-control-custom:focus,
-            .form-select-custom:focus {
-                border-color: var(--primary);
-                box-shadow: 0 0 0 0.25rem rgba(40, 75, 99, 0.25);
-                outline: none;
-            }
-
-        /* --- Table Styles --- */
-        .table-responsive-custom {
-            margin-bottom: 3rem;
-        }
-
-        .table-custom {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            background-color: var(--text-light);
-        }
-
-            .table-custom thead {
-                background-color: var(--primary) !important;
-                color: var(--table-header-text);
-            }
-
-            .table-custom th {
-                background-color: var(--primary);
-                padding: 1rem 0.8rem;
-                font-weight: 600;
-                color: var(--text-light);
-                text-align: center; /* Center align header text */
-                white-space: nowrap; /* Prevent line breaks */
-                overflow: hidden;
-                text-overflow: ellipsis; /* Add ellipsis for overflow text */
-            }
-
-            .table-custom tbody tr {
-                border-bottom: 1px solid var(--secondary);
-                transition: background-color 0.2s ease;
-            }
-
-                .table-custom tbody tr:last-child {
-                    border-bottom: none;
-                }
-
-                .table-custom tbody tr:hover {
-                    background-color: var(--secondary);
-                }
-
-            .table-custom td {
-                padding: 0.8rem 0.8rem;
-                vertical-align: middle;
-                text-align: center; /* Center align cell text */
-                white-space: nowrap; /* Prevent line breaks */
-                overflow: hidden;
-                text-overflow: ellipsis; /* Add ellipsis for overflow text */
-            }
-
-                .table-custom th:last-child,
-                .table-custom td:last-child {
-                    text-align: center; /* Center align last column (Actions) */
-                    padding-right: 0.8rem; /* Adjusted for centering, original was 1.5rem */
-                    white-space: nowrap;
-                }
-
-        /* --- Footer Styles --- */
-        footer {
-            background-color: #284B63;
-            color: white;
-            text-align: center;
-            padding: 8px; /* Reduced padding from 15px to 8px */
-            font-size: 12px; /* Reduced font-size from 14px to 12px */
-        }
-
-        /* Additional Home Page CSS (keeping for context, but not directly used on Trips) */
-        .hero {
-            padding: 6rem 1rem 4rem;
-            text-align: center;
-            background: linear-gradient(to bottom, var(--bg), #fff6ec);
-        }
-
-            .hero h1 {
-                font-size: 3rem;
-                font-weight: bold;
-                color: var(--primary);
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-                max-width: 600px;
-                margin: 1rem auto;
-                color: var(--text-dark);
-            }
-
-        .grid-cols {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-        }
-
-        .section-container {
-            padding: 3rem 1rem 3rem;
-            text-align: center;
-            background: linear-gradient(to bottom, var(--bg), #fff6ec);
-        }
-
-            .section-container h1 {
-                font-size: 2rem;
-                font-weight: bold;
-                color: var(--primary);
-            }
-
-            .section-container p {
-                font-size: 1.1rem;
-                max-width: 600px;
-                margin: 1rem auto;
-                color: var(--text-dark);
-            }
-
-        .contact-details {
-            margin: 1rem auto;
-            font-size: 1.1rem;
-        }
-
-            .contact-details a {
-                color: var(--primary);
-                text-decoration: none;
-                font-weight: bold;
-            }
-
-                .contact-details a:hover {
-                    color: var(--accent);
-                }
-
-        .fleet-layout {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            padding: 4rem 2rem;
-        }
-
-        .image-content {
-            flex: 1;
-            text-align: center;
-        }
-
-            .image-content img {
-                width: 100%;
-                max-width: 500px;
-                height: auto;
-                border-radius: 10px;
-            }
-
-        .text-content {
-            flex: 1;
-            text-align: left;
-        }
-
-        /* Media Query: Corrected and cleaned up */
-        @@media (max-width: 768px) {
-            .dropdown-menu
-
-        {
-            left: 0;
-            transform: translateX(0);
-            min-width: 100%;
-        }
-
-        }
-    </style>
-</head>
-<body>
-    @model IEnumerable<TFMS.ViewModels.UserViewModel>
-
-    @{
-        ViewData["Title"] = "Manage Users";
+    .fleet-layout {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 4rem 2rem;
     }
 
-    <div class="main-content-wrapper">
-        <h1>Manage Users</h1>
+    .image-content {
+        flex: 1;
+        text-align: center;
+    }
 
-        <p>
-            <a asp-action="CreateUser" class="btn btn-accent">Create New User</a>
-        </p>
-
-        @if (TempData["SuccessMessage"] != null)
-        {
-            <div class="alert alert-success">
-                @TempData["SuccessMessage"]
-            </div>
+        .image-content img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
         }
 
-        <div class="table-responsive-custom">
-            <table class="table table-hover table-striped table-custom">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Email)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.FirstName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.LastName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.EmployeeId)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.IsActiveDriver)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.DrivingLicenseNumber)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.LicenseExpiryDate)
-                        </th>
-                        <th>
-                            Roles
-                        </th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FirstName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.LastName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.EmployeeId)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IsActiveDriver)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DrivingLicenseNumber)
-                            </td>
-                            <td>
-                                @* Assuming LicenseExpiryDate is a DateTime, you might want to format it *@
-                                @Html.DisplayFor(modelItem => item.LicenseExpiryDate)
-                            </td>
-                            <td>
-                                @* Assuming Roles is a collection of strings, join them for display *@
-                                @if (item.Roles != null && item.Roles.Any())
-                                {
-                                    @string.Join(", ", item.Roles)
-                                }
-                            </td>
-                            <td>
-                                <a asp-action="EditUser" asp-route-id="@item.Id" class="btn btn-action-small btn-outline-primary-custom" title="Edit">
-                                    <i class="bi bi-pencil-square"></i> Edit
-                                </a>
-                                <a asp-action="UserDetails" asp-route-id="@item.Id" class="btn btn-sm btn-outline-details-custom">
-                                    <i class="bi bi-info-circle me-1"></i>Details
-                                </a>
-                                <a asp-action="DeleteUser" asp-route-id="@item.Id" class="btn btn-action-small btn-outline-danger-custom" title="Delete">
-                                    <i class="bi bi-trash"></i> Delete
-                                </a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+    .text-content {
+        flex: 1;
+        text-align: left;
+    }
+
+    /* Media Query: Corrected and cleaned up */
+    @@media (max-width: 768px) {
+        .dropdown-menu
+
+    {
+        left: 0;
+        transform: translateX(0);
+        min-width: 100%;
+    }
+
+    }
+</style>
+
+
+<div class="container content-container mt-4">
+    <h1>Manage Users</h1>
+
+    <p>
+        <a asp-action="CreateUser" class="btn btn-md btn-outline-details-custom">Create New User</a>
+    </p>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
         </div>
+    }
+
+    <div class="table-responsive-custom">
+        <table class="table table-hover table-striped table-custom">
+            <thead>
+                <tr>
+                    @* <th> *@
+                    @*     @Html.DisplayNameFor(model => model.Email) *@
+                    @* </th> *@
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeeId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActiveDriver)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DrivingLicenseNumber)
+                    </th>
+                    @* <th> *@
+                    @*     @Html.DisplayNameFor(model => model.LicenseExpiryDate) *@
+                    @* </th> *@
+                    <th>
+                        Roles
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @* <td> *@
+                        @*     @Html.DisplayFor(modelItem => item.Email) *@
+                        @* </td> *@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActiveDriver)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DrivingLicenseNumber)
+                        </td>
+                        @* <td> *@
+                        @*     @Html.DisplayFor(modelItem => item.LicenseExpiryDate) *@
+                        @* </td> *@
+                        <td>
+                            @* Assuming Roles is a collection of strings, join them for display *@
+                            @if (item.Roles != null && item.Roles.Any())
+                            {
+                                @string.Join(", ", item.Roles)
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="EditUser" asp-route-id="@item.Id" class="btn btn-action-small btn-outline-primary-custom" title="Edit">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a asp-action="UserDetails" asp-route-id="@item.Id" class="btn btn-sm btn-outline-details-custom">
+                                <i class="bi bi-info-circle me-1"></i>Details
+                            </a>
+                            <a asp-action="DeleteUser" asp-route-id="@item.Id" class="btn btn-action-small btn-outline-danger-custom" title="Delete">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-        function scrollToSection(id) {
-            const section = document.getElementById(id);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
-            }
+<script>
+    function scrollToSection(id) {
+        const section = document.getElementById(id);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
         }
-    </script>
-</body>
-</html>
+    }
+</script>

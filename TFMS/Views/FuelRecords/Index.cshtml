@@ -10,36 +10,36 @@
     <h1 class="text-primary">Fuel Records</h1>
 
     <p>
-        <a asp-action="Create" class="btn btn-accent">Add New Fuel Record</a>
+        <a asp-action="Create" class="btn btn-md btn-outline-details-custom">Add New Fuel Record</a>
     </p>
 
     <form asp-controller="FuelRecords" asp-action="Index" method="get" class="mb-4">
         <div class="row g-3 align-items-end">
-            <div class="col-md-3">
-                <label for="searchString" class="form-label">Search (Vehicle Reg No, Driver Email)</label>
+            <div class="col-md-3 col-lg-3">
+                <label for="searchString" class="form-label">Search (Reg No, Driver Email)</label>
                 <input type="text" name="searchString" value="@ViewData["CurrentSearchString"]" class="form-control" />
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4 col-lg-2">
                 <label for="vehicleIdFilter" class="form-label">Filter by Vehicle</label>
                 <select name="vehicleIdFilter" class="form-select" asp-items="@ViewBag.VehicleFilterList"></select>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4 col-lg-2">
                 <label for="driverIdFilter" class="form-label">Filter by Driver</label>
                 <select name="driverIdFilter" class="form-select" asp-items="@ViewBag.DriverFilterList"></select>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4 col-lg-2">
                 <label for="dateFilter" class="form-label">Fueling Date</label>
                 <input type="date" name="dateFilter" value="@ViewData["CurrentDateFilter"]" class="form-control" />
             </div>
-            <div class="col-md-3">
-                <button type="submit" class="btn btn-outline-primary">Apply Filters</button>
-                <a asp-action="Index" class="btn btn-outline-secondary">Clear Filters</a>
+            <div class="col-md-2 d-flex align-items-end justify-content-end">
+                <button type="submit" class="btn btn-md btn-outline-secondary me-2">Apply Filters</button>
+                <a asp-action="Index" class="btn btn-md btn-outline-danger">Clear Filters</a>
             </div>
         </div>
     </form>
     @* --- End Search and Filter Section --- *@
 
-    <table class="table table-hover" id="fuelRecordsTable">
+    <table class="table table-hover table-striped" id="fuelRecordsTable">
         @* Added id and table-hover *@
         <thead>
             <tr>
@@ -97,9 +97,9 @@
                             @* Added flex-nowrap for actions *@
                             @if (User.IsInRole("Fleet Administrator"))
                             {
-                                <a asp-action="Edit" asp-route-id="@item.FuelId" class="btn btn-sm btn-primary me-1"><i class="bi bi-pencil-square"></i> Edit</a> @* Added button classes and icons *@
-                                <a asp-action="Details" asp-route-id="@item.FuelId" class="btn btn-sm btn-info me-1"><i class="bi bi-info-circle"></i> Details</a> @* Added button classes and icons *@
-                                <a asp-action="Delete" asp-route-id="@item.FuelId" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</a> @* Added button classes and icons *@
+                                <a asp-action="Edit" asp-route-id="@item.FuelId" class="btn btn-action-small btn-outline-primary-custom me-1"><i class="bi bi-pencil-square"></i> Edit</a> @* Added button classes and icons *@
+                                <a asp-action="Details" asp-route-id="@item.FuelId" class="btn btn-sm btn-outline-details-custom"><i class="bi bi-info-circle"></i> Details</a> @* Added button classes and icons *@
+                                <a asp-action="Delete" asp-route-id="@item.FuelId" class="btn btn-action-small btn-outline-danger-custom me-1"><i class="bi bi-trash"></i> Delete</a> @* Added button classes and icons *@
                             }
                             else
                             {
@@ -120,6 +120,103 @@
     }
     <style>
 
+        .btn-outline-primary-custom {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            background-color: transparent;
+        }
+
+            .btn-outline-primary-custom:hover {
+                background-color: var(--primary);
+                color: var(--text-light);
+            }
+
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--text-light);
+            border-radius: 8px;
+            padding: 0.6rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+            .btn-accent:hover {
+                background-color: var(--button-hover);
+                color: var(--text-light);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+
+        .btn-secondary-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+            .btn-secondary-outline:hover {
+                background-color: var(--primary);
+                color: var(--text-light);
+            }
+
+        .btn-action-small {
+            padding: 0.3rem 0.5rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            margin-left: 0.15rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-outline-primary-custom {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            background-color: transparent;
+        }
+
+            .btn-outline-primary-custom:hover {
+                background-color: var(--primary);
+                color: var(--text-light);
+            }
+
+        .btn-outline-info-custom {
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            background-color: transparent;
+        }
+
+            .btn-outline-info-custom:hover {
+                background-color: var(--accent);
+                color: var(--text-light);
+            }
+
+        .statusButton {
+            color: #154734;
+            border: 1px solid #154734;
+            background-color: transparent;
+        }
+
+        .statusButtons {
+            background-color: #5cb85c;
+            color: var(--text-light);
+        }
+
+        .btn-outline-danger-custom {
+            color: #dc3545;
+            border: 1px solid #dc3545;
+            background-color: transparent;
+        }
+
+            .btn-outline-danger-custom:hover {
+                background-color: #dc3545;
+                color: var(--text-light);
+            }
+
         /* --- TABLE HEADER STYLES (Applied to all tables with class "table") --- */
         .table thead th {
             background-color: var(--primary) !important; /* Use primary blue */
@@ -127,10 +224,14 @@
             border-color: var(--primary) !important; /* Blue border */
             white-space: normal; /* Allow header text to wrap */
             padding: 0.75rem; /* Standard Bootstrap padding, adjust if needed */
-            text-align: left; /* Align text to the left */
+            text-align: center; /* Align text to the left */
             vertical-align: middle; /* Vertically align text in the middle */
         }
         /* --- END TABLE HEADER STYLES --- */
+
+        .table tbody tr{
+            text-align: center;
+        }
 
         /* --- ZEBRA STRIPING CSS --- */
         /* Apply to tables with ID "fuelRecordsTable" for specific styling */
