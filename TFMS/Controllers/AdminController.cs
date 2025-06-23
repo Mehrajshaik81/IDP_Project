@@ -111,6 +111,39 @@ namespace TFMS.Controllers // <<< Your correct namespace for Controllers
             return View(model);
         }
 
+
+        // GET: Admin/DetailsUser/{id}
+        public async Task<IActionResult> UserDetails(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+            var model = new UserViewModel
+            {
+                Id = user.Id,
+                Email = user.Email ?? "N/A",
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                EmployeeId = user.EmployeeId,
+                IsActiveDriver = user.IsActiveDriver,
+                DrivingLicenseNumber = user.DrivingLicenseNumber,
+                LicenseExpiryDate = user.LicenseExpiryDate,
+                Roles = userRoles.ToList()
+            };
+
+            return View(model);
+        }
+
+
         // GET: Admin/EditUser/5
         public async Task<IActionResult> EditUser(string id)
         {
