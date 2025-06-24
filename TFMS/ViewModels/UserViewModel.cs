@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TFMS.Models; // Ensure this matches your ApplicationUser namespace
 
-namespace TFMS.ViewModels // <<< Your correct namespace for ViewModels
+namespace TFMS.ViewModels 
 {
     public class UserViewModel
     {

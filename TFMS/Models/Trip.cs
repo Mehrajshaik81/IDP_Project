@@ -71,10 +71,12 @@ namespace TFMS.Models
         public DateTime? ActualEndTime { get; set; }
 
         [Display(Name = "Estimated Distance (km)")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "The field must contain only numbers.")]
         [Column(TypeName = "decimal(18, 2)")] // <<< ADD THIS LINE
         public decimal? EstimatedDistanceKm { get; set; }
 
         [Display(Name = "Actual Distance (km)")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "The field must contain only numbers.")]
         [Column(TypeName = "decimal(18, 2)")] // <<< ADD THIS LINE
         public decimal? ActualDistanceKm { get; set; }
 

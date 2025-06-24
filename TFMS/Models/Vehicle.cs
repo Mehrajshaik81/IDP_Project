@@ -11,11 +11,14 @@ namespace TFMS.Models // Your correct namespace
         public int VehicleId { get; set; } 
 
         [Required]
-        [StringLength(20)]
+        [StringLength(10)]
         [Display(Name = "Reg.No")]
+        [RegularExpression(@"^[A-Za-z]{2}.*$",
+                            ErrorMessage = "Registration number must start with two letters")]
         public string RegistrationNumber { get; set; } = string.Empty;
 
         [Display(Name = "Capacity")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "The field must contain only numbers.")]
         public int Capacity { get; set; } // This should be non-nullable, as capacity is usually a definite number
 
         [Required]
@@ -39,10 +42,11 @@ namespace TFMS.Models // Your correct namespace
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Fuel Capacity")]
+        [Display(Name = "Fuel Type")]
         public string FuelType { get; set; } = "Petrol"; // e.g., Petrol, Diesel, Electric
 
         [Display(Name = "Odometer")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "The field must contain only numbers.")]
         public double? CurrentOdometerKm { get; set; } // <<< ENSURE THIS IS NULLABLE
 
         // Navigation properties for related entities

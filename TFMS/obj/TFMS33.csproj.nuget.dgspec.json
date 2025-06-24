@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\2406698\\Project\\IDP-Project\\IDP_Project\\TFMS\\TFMS33.csproj": {}
+    "C:\\Users\\2406671\\Source\\Repos\\IDP_Project\\TFMS\\TFMS33.csproj": {}
   },
   "projects": {
-    "C:\\Users\\2406698\\Project\\IDP-Project\\IDP_Project\\TFMS\\TFMS33.csproj": {
+    "C:\\Users\\2406671\\Source\\Repos\\IDP_Project\\TFMS\\TFMS33.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\2406698\\Project\\IDP-Project\\IDP_Project\\TFMS\\TFMS33.csproj",
+        "projectUniqueName": "C:\\Users\\2406671\\Source\\Repos\\IDP_Project\\TFMS\\TFMS33.csproj",
         "projectName": "TFMS33",
-        "projectPath": "C:\\Users\\2406698\\Project\\IDP-Project\\IDP_Project\\TFMS\\TFMS33.csproj",
-        "packagesPath": "C:\\Users\\2406698\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\2406698\\Project\\IDP-Project\\IDP_Project\\TFMS\\obj\\",
+        "projectPath": "C:\\Users\\2406671\\Source\\Repos\\IDP_Project\\TFMS\\TFMS33.csproj",
+        "packagesPath": "C:\\Users\\2406671\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\2406671\\Source\\Repos\\IDP_Project\\TFMS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\2406698\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\2406671\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

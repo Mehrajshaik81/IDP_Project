@@ -34,10 +34,12 @@ namespace TFMS.Models // Your correct namespace
         public DateTime? ActualCompletionDate { get; set; }
 
         [Display(Name = "Cost")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "The field must contain only numbers.")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal? Cost { get; set; }
 
         [Display(Name = "Odometer")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "The field must contain only numbers.")]
         public double? OdometerReadingKm { get; set; }
 
         [StringLength(100)]

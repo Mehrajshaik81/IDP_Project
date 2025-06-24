@@ -8,7 +8,7 @@ using TFMS.Data;
 
 #nullable disable
 
-namespace TFMS.Migrations
+namespace TFMS33.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot

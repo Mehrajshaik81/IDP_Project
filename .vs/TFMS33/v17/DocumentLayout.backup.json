@@ -1,10 +1,70 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\2406698\\Project\\IDP-Project\\IDP_Project\\",
+  "WorkspaceRootPath": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406698\\project\\idp-project\\idp_project\\tfms\\views\\public\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\viewmodels\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\viewmodels\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\views\\vehicles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\views\\vehicles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\views\\public\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\views\\public\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\views\\performancereports\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\views\\performancereports\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\views\\trips\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\views\\trips\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\views\\fuelrecords\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\views\\fuelrecords\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\views\\trips\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\views\\trips\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\views\\trips\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\views\\trips\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\views\\trips\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\views\\trips\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|c:\\users\\2406671\\source\\repos\\idp_project\\tfms\\views\\trips\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{91128E8B-1F16-4631-898A-08FC07C73AC7}|TFMS\\TFMS33.csproj|solutionrelative:tfms\\views\\trips\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Migrations\\20250623181402_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TFMS\\Migrations\\20250623181402_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,24 +74,255 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "TFMS\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "TFMS\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-24T04:23:20.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\2406698\\Project\\IDP-Project\\IDP_Project\\TFMS\\Views\\Public\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Vehicles\\Index.cshtml",
+              "RelativeDocumentMoniker": "TFMS\\Views\\Vehicles\\Index.cshtml",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Vehicles\\Index.cshtml",
+              "RelativeToolTip": "TFMS\\Views\\Vehicles\\Index.cshtml",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAAAKAAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-24T04:17:16.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\ViewModels\\UserViewModel.cs",
+              "RelativeDocumentMoniker": "TFMS\\ViewModels\\UserViewModel.cs",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\ViewModels\\UserViewModel.cs",
+              "RelativeToolTip": "TFMS\\ViewModels\\UserViewModel.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAADwvwUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T04:12:21.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "TFMS\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "TFMS\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACwBAAAAAAAAAAAAADsBAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-24T03:37:53.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\PerformanceReports\\Details.cshtml",
+              "RelativeDocumentMoniker": "TFMS\\Views\\PerformanceReports\\Details.cshtml",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\PerformanceReports\\Details.cshtml",
+              "RelativeToolTip": "TFMS\\Views\\PerformanceReports\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-24T03:11:17.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "TFMS\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "TFMS\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T19:36:13.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Program.cs",
+              "RelativeDocumentMoniker": "TFMS\\Program.cs",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Program.cs",
+              "RelativeToolTip": "TFMS\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T19:18:38.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\appsettings.json",
+              "RelativeDocumentMoniker": "TFMS\\appsettings.json",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\appsettings.json",
+              "RelativeToolTip": "TFMS\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-23T18:07:45.214Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Public\\Index.cshtml",
               "RelativeDocumentMoniker": "TFMS\\Views\\Public\\Index.cshtml",
-              "ToolTip": "C:\\Users\\2406698\\Project\\IDP-Project\\IDP_Project\\TFMS\\Views\\Public\\Index.cshtml",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Public\\Index.cshtml",
               "RelativeToolTip": "TFMS\\Views\\Public\\Index.cshtml",
-              "ViewState": "AgIAAOoAAAAAAAAAAAAAAO4AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAO4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-06-23T17:00:20.028Z",
               "EditorCaption": ""
             },
             {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\FuelRecords\\Delete.cshtml",
+              "RelativeDocumentMoniker": "TFMS\\Views\\FuelRecords\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\FuelRecords\\Delete.cshtml",
+              "RelativeToolTip": "TFMS\\Views\\FuelRecords\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T18:54:34.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Trips\\Delete.cshtml",
+              "RelativeDocumentMoniker": "TFMS\\Views\\Trips\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Trips\\Delete.cshtml",
+              "RelativeToolTip": "TFMS\\Views\\Trips\\Delete.cshtml",
+              "ViewState": "AgIAAIIBAAAAAAAAAAAawI4BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T18:50:44.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Trips\\Index.cshtml",
+              "RelativeDocumentMoniker": "TFMS\\Views\\Trips\\Index.cshtml",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Trips\\Index.cshtml",
+              "RelativeToolTip": "TFMS\\Views\\Trips\\Index.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T18:48:46.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Trips\\Edit.cshtml",
+              "RelativeDocumentMoniker": "TFMS\\Views\\Trips\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Trips\\Edit.cshtml",
+              "RelativeToolTip": "TFMS\\Views\\Trips\\Edit.cshtml",
+              "ViewState": "AgIAALMBAAAAAAAAAAAAALoBAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T18:41:21.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Trips\\Create.cshtml",
+              "RelativeDocumentMoniker": "TFMS\\Views\\Trips\\Create.cshtml",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Trips\\Create.cshtml",
+              "RelativeToolTip": "TFMS\\Views\\Trips\\Create.cshtml",
+              "ViewState": "AgIAAIwBAAAAAAAAAAAAAKcBAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T18:33:05.543Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{4a9b7e51-aa16-11d0-a8c5-00a0c921a4d2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Trips\\Details.cshtml",
+              "RelativeDocumentMoniker": "TFMS\\Views\\Trips\\Details.cshtml",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Views\\Trips\\Details.cshtml",
+              "RelativeToolTip": "TFMS\\Views\\Trips\\Details.cshtml",
+              "ViewState": "AgIAABQCAAAAAAAAAAAAABcCAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T18:38:14.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "20250623181402_initialcreate.cs",
+              "DocumentMoniker": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Migrations\\20250623181402_initialcreate.cs",
+              "RelativeDocumentMoniker": "TFMS\\Migrations\\20250623181402_initialcreate.cs",
+              "ToolTip": "C:\\Users\\2406671\\source\\repos\\IDP_Project\\TFMS\\Migrations\\20250623181402_initialcreate.cs",
+              "RelativeToolTip": "TFMS\\Migrations\\20250623181402_initialcreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T18:14:03.023Z",
+              "EditorCaption": ""
             }
           ]
         }

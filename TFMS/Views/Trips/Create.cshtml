@@ -419,13 +419,14 @@
     }
 
     <div class="main-content-wrapper">
-        <h1>Create Trip</h1>
-
-        <hr />
-        <div class="row">
-            <div class="col-md-8">
+        
+        <div class="container content-container">
+            
+                <h1>Create Trip</h1>
+                <hr />
+                <div class="col-md-8">
                 @* Changed col-md-4 to col-md-8 for a wider form as seen in delete.cshtml *@
-                <div class="form-filter-container">
+                <div class="row">
                     <form asp-action="Create">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="mb-3">
@@ -469,17 +470,17 @@
                             <input asp-for="EstimatedDistanceKm" class="form-control-custom" type="number" step="0.1" /> @* Added type="number" and step for better input control *@
                             <span asp-validation-for="EstimatedDistanceKm" class="text-danger"></span>
                         </div>
-                        <div class="mb-3">
-                            <label asp-for="RouteDetails" class="form-label-custom"></label>
-                            <input asp-for="RouteDetails" class="form-control-custom" />
-                            <span asp-validation-for="RouteDetails" class="text-danger"></span>
-                        </div>
+                        @* <div class="mb-3"> *@
+                        @*     <label asp-for="RouteDetails" class="form-label-custom"></label> *@
+                        @*     <input asp-for="RouteDetails" class="form-control-custom" /> *@
+                        @*     <span asp-validation-for="RouteDetails" class="text-danger"></span> *@
+                        @* </div> *@
                         <div class="row mt-4">
                             <div class="col-auto">
-                                <input type="submit" value="Create" class="btn btn-accent" /> @* Used btn-accent for the primary action button *@
+                                <input type="submit" value="Create" class="btn btn-sm btn-accent" /> @* Used btn-accent for the primary action button *@
                             </div>
                             <div class="col-auto">
-                                <a asp-action="Index" class="btn btn-secondary-outline">Back to List</a>
+                                <a asp-action="Index" class="btn btn-sm btn-secondary-outline">Back to List</a>
                             </div>
                         </div>
                     </form>

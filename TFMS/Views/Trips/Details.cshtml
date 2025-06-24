@@ -431,13 +431,14 @@
     }
 
     <div class="main-content-wrapper">
-        <h1>Trip Details</h1>
-
-        <hr />
-        <div class="row">
+        
+        <div class="container content-container">
             <div class="col-md-8">
+                <h1>Trip Details</h1>
+
+                <hr />
                 @* Adjusted column size for better details layout *@
-                <div class="form-filter-container">
+                <div class="row">
                     @* Using this div for consistent styling as in Edit *@
                     <dl class="row">
                         <dt class="col-sm-4 form-label-custom">
@@ -516,22 +517,23 @@
                     </dl>
                 </div>
             </div>
+            <div class="row mt-4">
+                @* Changed to row and added margin-top for spacing *@
+                <div class="col-auto">
+                    @* Using col-auto to wrap content and allow buttons to size themselves within *@
+                    @if (User.IsInRole("Fleet Administrator") || User.IsInRole("Fleet Operator"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@Model?.TripId" class="btn btn-sm btn-outline-details-custom editButton">Edit</a>
+                    }
+                </div>
+                <div class="col-auto">
+                    @* Using col-auto for the second button as well *@
+                    <a asp-action="Index" class="btn btn-action-small btn-outline-primary-custom">Back to List</a>
+                </div>
+            </div>
         </div>
 
-        <div class="row mt-4">
-            @* Changed to row and added margin-top for spacing *@
-            <div class="col-auto">
-                @* Using col-auto to wrap content and allow buttons to size themselves within *@
-                @if (User.IsInRole("Fleet Administrator") || User.IsInRole("Fleet Operator"))
-                {
-                    <a asp-action="Edit" asp-route-id="@Model?.TripId" class="btn btn-sm btn-outline-details-custom editButton">Edit</a>
-                }
-            </div>
-            <div class="col-auto">
-                @* Using col-auto for the second button as well *@
-                <a asp-action="Index" class="btn btn-action-small btn-outline-primary-custom">Back to List</a>
-            </div>
-        </div>
+        
     </div>
 
    

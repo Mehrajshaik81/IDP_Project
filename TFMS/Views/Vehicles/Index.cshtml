@@ -38,7 +38,7 @@
                 </div>
             </div>
         </form>
-        @* --- End Search and Filter Section --- *@
+         @* End Search and Filter Section *@
 
     <table class="table table-hover table-striped" id="vehiclesTable">
             @* Added id="vehiclesTable" and table-hover *@
@@ -134,11 +134,11 @@
     <style>
         /* --- TABLE HEADER STYLES (Applied to all tables with class "table") --- */
         .table thead th {
-            background-color: var(--primary) !important; /* Use primary blue variable for consistency */
-            color: var(--text-light) !important; /* White text */
-            border-color: var(--primary) !important; /* Blue border */
-            white-space: normal; /* Allow header text to wrap */
-            padding: 0.75rem; /* Standard Bootstrap padding, adjust if needed */
+            background-color: var(--primary) !important; 
+            color: var(--text-light) !important; 
+            border-color: var(--primary) !important; 
+            white-space: normal; 
+            padding: 0.75rem; 
             text-align: center;
             vertical-align: middle; 
         }
@@ -160,17 +160,17 @@
 
         /* Styles for table cells to ensure wrapping and vertical alignment */
         #vehiclesTable td {
-            white-space: normal; /* Allow cell content to wrap */
+            white-space: normal; 
             word-wrap: break-word;
             overflow-wrap: break-word;
-            vertical-align: middle; /* Vertically align cell content in the middle */
-            padding: 0.5rem; /* Standard Bootstrap cell padding */
+            vertical-align: middle; 
+            padding: 0.5rem; 
         }
 
-            /* Specific styling for the actions column to keep buttons/links on one line */
-            #vehiclesTable td:last-child { /* Targets the last td in each row (actions column) */
-                white-space: nowrap; /* Prevent buttons/links from wrapping */
-                text-align: right; /* Align buttons/links to the right */
+            
+            #vehiclesTable td:last-child { 
+                white-space: nowrap; 
+                text-align: right; 
             }
 
         /* Sorting icon styles */

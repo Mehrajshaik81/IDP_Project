@@ -28,11 +28,7 @@ namespace TFMS.Data // Your correct namespace
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names to something different.
-            // See the ASP.NET Identity documentation for more details.
-
-            // Configure enum conversion for MaintenanceStatus with custom converter
+            
             var converter = new ValueConverter<MaintenanceStatus, string>(
                 v => v.GetDescription(), // Convert enum to string (using description or ToString)
                 v => v.ToEnumValue<MaintenanceStatus>() // Convert string to enum
@@ -72,10 +68,7 @@ namespace TFMS.Data // Your correct namespace
     // --- Extension Methods for Enum Description and Parsing (MUST be outside ApplicationDbContext class, but in the same namespace) ---
     public static class EnumExtensions
     {
-        // Extension method to get the Description attribute value of an enum
-
-
-        // Extension method to convert a string back to an enum value, using Description attribute or name
+        
         public static TEnum ToEnumValue<TEnum>(this string stringValue) where TEnum : Enum
         {
             // Try to match by DescriptionAttribute first

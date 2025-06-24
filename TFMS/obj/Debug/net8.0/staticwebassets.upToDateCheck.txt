@@ -1,5 +1,10 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\fleet analytics.png
+wwwroot\images\fuel.png
+wwwroot\images\maintenance.png
+wwwroot\images\smart fleet management.jpg
+wwwroot\images\smart route.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

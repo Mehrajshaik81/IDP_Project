@@ -29,15 +29,18 @@ namespace TFMS.Models // Your correct namespace
 
         [Required]
         [Display(Name = "Fuel Quantity")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "The field must contain only numbers.")]
         [Column(TypeName = "decimal(18,2)")] // Specify precision and scale for currency/quantity
         public decimal? FuelQuantity { get; set; } // <<< ENSURE THIS IS NULLABLE
 
         [Required]
         [Display(Name = "Cost")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "The field must contain only numbers.")]
         [Column(TypeName = "decimal(18,2)")] // Specify precision and scale
         public decimal? Cost { get; set; } // <<< ENSURE THIS IS NULLABLE
 
         [Display(Name = "Odometer")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "The field must contain only numbers.")]
         public double? OdometerReadingKm { get; set; } // <<< ENSURE THIS IS NULLABLE
 
         [StringLength(200)]
